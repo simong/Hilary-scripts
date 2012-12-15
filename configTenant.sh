@@ -31,8 +31,8 @@ STATUS=$(curl --silent --output /dev/null --write-out %{http_code} --cookie conn
 -d"oae-content/default-content-privacy/defaultprivacy=everyone" \
 -d"oae-content/storage/backend=local" \
 -d"oae-content/storage/local-dir=/opt/sakai/poc/files" \
--d"oae-content/storage/amazons3-access-key=AKIAJTASR3UIC6GNWFRA" \
--d"oae-content/storage/amazons3-secret-key=/TFoH3wKDQn5jq/4Gpk8FlZZAakeqtqBShyN8cJs" \
+-d"oae-content/storage/amazons3-access-key=<your Amazon Access key>" \
+-d"oae-content/storage/amazons3-secret-key=<your Amazon secret key>" \
 -d"oae-content/storage/amazons3-region=us-east-1" \
 -d"oae-content/storage/amazons3-bucket=oae-performance-files" http://${GLOBAL_HOST}/api/config);
 output $STATUS 200 "Configured storage with the ${STORAGE} backend"
