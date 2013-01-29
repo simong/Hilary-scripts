@@ -21,5 +21,4 @@ function response_without_code {
 ADMIN_COOKIE=$(curl -s --cookie-jar - -d"username=administrator" -d"password=administrator" http://${GLOBAL_HOST}/api/auth/login | grep connect.sid | cut -f 7)
 if [ -z "${ADMIN_COOKIE}" ] && [ "${ADMIN_COOKIE+xxx}" = "xxx" ] ; then 
     echo $'\e[31m' "Could not log in as an admin."
-    exit 1;
 fi

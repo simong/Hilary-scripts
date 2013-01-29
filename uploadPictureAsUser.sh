@@ -44,6 +44,6 @@ output 200 200 "Uploading picture for ${USER_ID}"
 STATUS=$(curl --silent --write-out %{http_code} --output /dev/null --cookie connect.sid=${USER_COOKIE} -F"file=@${FILE};type=image/png" http://${TENANT_HOST}/api/user/${USER_ID}/picture)
 output $STATUS 200 "Uploaded the picture."
 
-# Crop it
+curl --cookie connect.sid=${USER_COOKIE} -d"principalId=${USER_ID}" -d"x=${X}" -d"y=${Y}" -d"width=${WIDTH}" http://${TENANT_HOST}/api/crop
 STATUS=$(curl --silent --write-out %{http_code} --output /dev/null  --cookie connect.sid=${USER_COOKIE} -d"principalId=${USER_ID}" -d"x=${X}" -d"y=${Y}" -d"width=${WIDTH}" http://${TENANT_HOST}/api/crop)
 output $STATUS 200 "Cropped it."

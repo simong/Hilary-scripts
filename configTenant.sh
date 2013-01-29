@@ -24,13 +24,14 @@ STORAGE="local"
 
 STATUS=$(curl --silent --output /dev/null --write-out %{http_code} --cookie connect.sid=${ADMIN_COOKIE} \
 -d"oae-content/default-content-copyright/defaultcopyright=nocopyright" \
+-d"oae-content/visibility/files=loggedin" \
 -d"oae-content/contentpermissions/defaultaccess=public" \
 -d"oae-content/documentpermissions/defaultaccess=public" \
 -d"oae-content/linkpermissions/defaultaccess=public" \
 -d"oae-content/collectionpermissions/defaultaccess=public" \
 -d"oae-content/default-content-privacy/defaultprivacy=everyone" \
 -d"oae-content/storage/backend=local" \
--d"oae-content/storage/local-dir=/opt/sakai/poc/files" \
+-d"oae-content/storage/local-dir=/opt/sakai/oae/files" \
 -d"oae-content/storage/amazons3-access-key=<your Amazon Access key>" \
 -d"oae-content/storage/amazons3-secret-key=<your Amazon secret key>" \
 -d"oae-content/storage/amazons3-region=us-east-1" \
