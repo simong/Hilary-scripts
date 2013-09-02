@@ -21,5 +21,5 @@ TENANT_NAME=${2-Cambridge}
 TENANT_HOST=${3-cam.oae.com}
 
 # Create a tenant.
-STATUS=$(curl --silent --output /dev/null --write-out %{http_code} --cookie connect.sid=${ADMIN_COOKIE} -d"alias=${TENANT_ALIAS}" -d"name=${TENANT_NAME}" -d"host=${TENANT_HOST}" http://${GLOBAL_HOST}/api/tenant/create)
+STATUS=$(curl --silent --output /dev/null --write-out %{http_code} --cookie connect.sid=${ADMIN_COOKIE} -d"alias=${TENANT_ALIAS}" -d"name=${TENANT_NAME}" -d"host=${TENANT_HOST}" --header "Host: ${GLOBAL_HOST}" --header "Referer: /api" http://${GLOBAL_HOST}/api/tenant/create)
 output $STATUS 200 "Created a tenant"
